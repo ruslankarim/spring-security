@@ -11,12 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>Please sign in</h1>
 <form method="post" action="/login">
-    <input name="j_username"/>
-    <input name="j_password"/>
-    <input type="submit"/>
+    <input placeholder="Email address" name="j_username"/>
+    <input placeholder="Password" name="j_password"/>
+    <input type="submit" value="Sign in"/>
 </form>
-
 </body>
 </html>
