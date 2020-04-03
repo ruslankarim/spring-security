@@ -41,7 +41,7 @@ public class UserDaoImp implements UserDAO {
   }
 
   @Override
-  public void deleteUser(String username) {
-    sessionFactory.getCurrentSession().delete(username);
+  public void deleteUser(User user) {
+    sessionFactory.getCurrentSession().delete(user);
   }
 }

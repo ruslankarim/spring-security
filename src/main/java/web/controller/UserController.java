@@ -127,6 +127,21 @@ public class UserController {
 				.addAttribute("isAdmin", isAdmin);
 		return "redirect:/admin";
 	}
+
+    @RequestMapping(value = "admin/delete", method = RequestMethod.GET)
+    public String deleteUser(ModelMap model, Principal principal, HttpServletRequest request){
+        User user = userServiceImp.findUserByID(Long.parseLong(request.getParameter("id")));
+        userServiceImp.deleteUser(user);
+        List<User> users = userServiceImp.getAllUsers();
+        User currentUser = userServiceImp.findUserByEmail(principal.getName());
+        boolean isAdmin = currentUser.getRoles().stream().map(Role::getAuthority)
+                .collect(Collectors.toList()).contains("ADMIN");
+        model.addAttribute("user", currentUser)
+                .addAttribute("users", users)
+                .addAttribute("isAdmin", isAdmin);
+        return "redirect:/admin";
+    }
+
 	@RequestMapping(value = "user", method = RequestMethod.GET)
 	public String userInfo(ModelMap model, Principal principal){
 		User user = userServiceImp.findUserByEmail(principal.getName());

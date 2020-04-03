@@ -22,8 +22,8 @@
                 <td><c:out value="${user.lastName}" /></td>
                 <td><c:out value="${user.age}" /></td>
                 <td><c:out value="${user.email}" /></td>
-                <td><c:forEach var="roles" items="${user.roles}">
-                    <c:out value="${roles.role}"></c:out>
+                <td><c:forEach var="role" items="${user.roles}">
+                    <c:out value="${role.toString()}"></c:out>
                 </c:forEach>
         </td>
     </tr>
